@@ -1,0 +1,591 @@
+// Базовые цвета
+$base-black: #1C2A39;
+$base-grey: #5C6A79;
+$base-violet: #9E98DC;
+$dark-violet: #4C3DB2;
+$background-violet: #EFEEF6;
+$fucsia: #FF8FE6;
+$base-red: #FF353A;
+$border-grey: #EEEDF5;
+$base-yellow: #F2C94C;
+
+
+// Шрифты
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Medium.woff2') format('woff2'),
+        url('fonts/Montserrat-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    line-height: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Bold.woff2') format('woff2'),
+        url('fonts/Montserrat-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    line-height: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat-Black.woff2') format('woff2'),
+        url('fonts/Montserrat-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    line-height: normal;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('fonts/OpenSans-VariableFont_wdth_wght.woff2') format('woff2'),
+        url('fonts/OpenSans-VariableFont_wdth_wght.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+}
+
+$font-main: 'Montserrat', sans-serif;
+$font-author: 'Open Sans', sans-serif;
+
+
+// Основные настройки
+
+body {
+    font-family: $font-main;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 77%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+main {
+    padding-top: 116px;
+}
+
+%base-shadow {
+    box-shadow: 0px 10px 10px #D0D0D8;
+}
+
+%base-button {
+    width: 176px;
+    height: 45px;
+    background-color: white;
+    text-transform: uppercase;
+    font-family: $font-main;
+    font-size: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+// Хэдер
+
+.header {
+    background-color: #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 47px auto 40px;
+    width: 77%;
+
+
+    &_logo {
+        font-size: 24px;
+        color: $base-black;
+        font-weight: 700;
+    }
+
+    &_menu {
+        display: flex;
+        gap: 40px;
+
+        a {
+            font-size: 10px;
+            color: $base-grey;
+
+            &:hover {
+                color: $base-black;
+            }
+        }
+    }
+
+    &-active a {
+        font-weight: 900;
+        color: $base-black;
+    }
+
+    &_personal {
+        display: flex;
+        gap: 40px;
+        height: 17px;
+    }
+
+    &_personal-icon:last-child {
+        position: relative;
+    }
+}
+
+.cart-count {
+    position: absolute;
+    bottom: 0;
+    right: -30%;
+    background-color: $base-red;
+    color: white;
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+// Слайдер
+
+.slider {
+    position: relative;
+
+    &_banner img {
+        width: 100%;
+        height: auto;
+    }
+
+    &_controls {
+        margin-top: 17px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        font-size: 24px;
+        line-height: 12px;
+        color: $background-violet;
+        cursor: pointer;
+    }
+
+    &_active {
+        color: $base-violet;
+    }
+
+    &_old-books,
+    &_top-books {
+        @extend %base-shadow;
+        position: absolute;
+        font-size: 18px;
+        font-weight: 700;
+        color: $base-black;
+
+        &:hover {
+            transition: 0.3s;
+            transform: scale(1.03);
+        }
+    }
+
+    &_old-books {
+        top: 80px;
+        right: -85px;
+        background-color: $base-violet;
+        width: 149px;
+        height: 204 px;
+        padding: 102px 20px 20px;
+        box-sizing: border-box;
+    }
+
+    &_top-books {
+        top: 350px;
+        right: -160px;
+        background-color: $fucsia;
+        width: 137px;
+        height: 273 px;
+        padding: 149px 47px 20px 20px;
+        box-sizing: border-box;
+    }
+}
+
+// Основной контент
+.main_content {
+    margin: 150px 0 95px;
+    display: flex;
+
+    &-menu {
+        position: relative;
+        width: 140px;
+        margin-right: 80px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: $background-violet;
+            height: 710px;
+            width: 616px;
+            z-index: -1;
+            top: -45px;
+            left: -360px;
+        }
+
+        &-list {
+            width: 155px;
+        }
+
+        &-list a {
+            font-size: 12px;
+            font-weight: 500;
+            color: $base-grey;
+            white-space: nowrap;
+        }
+
+        &-list li:not(:first-child) {
+            margin-top: 20px;
+        }
+
+        &-active a {
+            position: relative;
+            font-size: 16px;
+            font-weight: 700;
+            color: $base-black;
+
+            &::before {
+                position: absolute;
+                content: "\25CF";
+                font-size: 13px;
+                top: 1px;
+                left: -14px;
+                color: $dark-violet;
+            }
+        }
+    }
+
+    &-items {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        &-template {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            margin-bottom: 85px;
+
+            &-image {
+                @extend %base-shadow;
+                width: 212px;
+                height: 300px;
+            }
+
+            &-info {
+                width: 176px;
+
+                &-author {
+                    margin: 0;
+                    font-family: $font-author;
+                    color: $base-grey;
+                    font-size: 10px;
+                    font-weight: 400;
+                }
+
+                &-title {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                    margin: 5px 0;
+                    font-family: $font-main;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: $base-black
+                }
+
+                &-rating {
+                    display: flex;
+                    gap: 5px;
+                    align-items: baseline;
+
+                    &-review {
+                        font-family: $font-author;
+                        margin: 0;
+                        font-size: 10px;
+                        font-weight: 400;
+                        color: $base-grey;
+                    }
+
+                    &-body {
+                        position: relative;
+
+                        &::before {
+                            content: "★★★★★";
+                            display: block;
+                            color: $border-grey;
+                        }
+                    }
+                }
+
+                .rating-stars-active {
+                    position: absolute;
+                    width: 0%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+
+                    &::before {
+                        content: "★★★★★";
+                        display: absolute;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        color: $base-yellow;
+                    }
+                }
+
+                .rating-stars {
+                    display: flex;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
+
+                .rating-star {
+                    flex: 0 0 20%;
+                    height: 100%;
+                    opacity: 0;
+                }
+
+                &-descrition {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                    margin: 17px 0;
+                    width: 176px;
+                    height: 38px;
+                    font-family: $font-author;
+                    font-size: 10px;
+                    color: $base-grey;
+                    font-weight: 400;
+                }
+
+                &-price {
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: $base-black;
+                    margin: 0;
+                }
+            }
+        }
+
+        &-load-button {
+            @extend %base-button;
+            position: absolute;
+            bottom: -125px;
+            border: 1px solid $dark-violet;
+            color: $dark-violet;
+            margin: 96px auto 74px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-button {
+            @extend %base-button;
+            margin-top: 16px;
+            border: 1px solid $dark-violet;
+            color: $dark-violet;
+
+            &-bought,
+            &:hover {
+                @extend %base-button;
+                margin-top: 16px;
+                border: 1px solid $border-grey;
+                color: $base-grey;
+            }
+        }
+    }
+}
+
+.message_error {
+    margin-left: 100px;
+    display: center;
+    font-size: 12px;
+    color:$base-red;
+}
+
+@media screen and (max-width: 1383px) {
+    .container {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .slider_top-books,
+    .slider_old-books {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 880px) {
+    main {
+        padding-top: 80px;
+    }
+
+    .navigation {
+        margin: 27px auto 20px;
+
+        &_logo {
+            font-size: 15px;
+        }
+
+        &_menu {
+            gap: 20px;
+
+            a {
+                font-size: 7px;
+            }
+        }
+
+        &_personal {
+            display: flex;
+            gap: 20px;
+            height: 17px;
+        }
+    }
+
+    .main_content-menu-list {
+        width: 140px;
+    }
+
+    .slider_top-books,
+    .slider_old-books {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .main_content {
+        margin: 100px 0 60px;
+
+        &-menu {
+            position: relative;
+            width: 125px;
+            margin-right: 40px;
+
+            &-list a {
+                font-size: 8px;
+            }
+
+            &-list {
+                width: 70px;
+            }
+
+            &-list-active a::before {
+                font-size: 8px;
+                top: 0px;
+                left: -8px;
+            }
+        }
+    }
+
+    .main_content-items-template {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .navigation {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .main_content {
+        flex-direction: column;
+        margin: 30px 0 30px;
+
+        &-menu {
+            width: 100%;
+
+            &-list {
+                display: flex;
+                gap: 10px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                margin-bottom: 50px;
+                width: 100%;
+            }
+
+            &-list a {
+                font-size: 10px;
+                margin: 10px 0;
+            }
+
+            &::after {
+                display: none;
+            }
+
+            &-list li:not(:first-child) {
+                margin-top: 0px;
+            }
+
+            &-active a::before {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main_content-items-template-image {
+        width: 150px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 459px) {
+    .navigation_personal {
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .main_content-items-button {
+        height: 35px;
+    }
+
+    .main_content-items-template-image {
+        width: 120px;
+        height: auto;
+    }
+
+    .main_content-items-template {
+        gap: 15px;
+    }
+}
