@@ -1,6 +1,5 @@
 import { saveCartToLocalStorage, loadCartFromLocalStorage } from './cartStorage.js';
 
-// const cartState = new Set();
 const cartState = loadCartFromLocalStorage();
 updateCartDisplay();
 
